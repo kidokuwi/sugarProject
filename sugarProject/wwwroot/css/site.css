@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #bbb5b5;
+    
+}
+
+li {
+    float: left;
+}
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none
+    }
+
+        li a:hover:not(.active) {
+            transition: background-color 0.3s ease;
+            background-color: #726e6e;
+        }
+
+
+
+
+
+.active {
+    background-color: #04AA6D;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    outline-offset: 1px;
+    padding: 40px;
+    padding-top: 10px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+    font-family: Sans-serif;
+}
+.leftGeneral {
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
+    width: 35%;
+    outline-offset: 1px;
+    padding: 40px;
+    padding-top: 40px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+    font-family: Sans-serif;
+}
+
+.centerTitle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    font-size: 24px;
+}
+
+.left {
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 35%;
+    font-size: 18px;
+}
+
+.fancyButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #686d94;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.fancyButton:hover {
+    background-color: #2e333e;
+}
