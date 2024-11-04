@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .centreTable {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        th {
+            text-align: center;
+            border: 2px solid blue;
+            padding: 20px;
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+
+        td {
+            border-spacing: 0px;
+            text-align: center;
+            border: 2px solid blue;
+            padding: 20px;
+        }
+        .mainTd{
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="centreTable">
+        <table style="border:2px solid blue;">
+            <tr>
+                <th> 11 </th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td colspan="2" rowspan="2"> 22 </td>
+                <td>24</td>
+
+            </tr>
+            <tr>
+                <td>31</td>
+             
+                <td>34</td>
+
+            </tr>
+            <tr>
+                <td>41</td>
+                <td>42</td>
+                <td>43</td>
+                <td>44</td>
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
