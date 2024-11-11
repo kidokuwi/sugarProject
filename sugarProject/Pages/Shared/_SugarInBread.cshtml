@@ -3,7 +3,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title</title> <!-- change to a diffrent view-thing -->
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body style="background-color:burlywood">
 
@@ -33,7 +34,7 @@
 
             <div>
                 <h1>
-                    @
+                    @RenderSection("Title", required: false)
                 </h1>
             </div>
 
@@ -48,7 +49,7 @@
                     </div>
                     <div>
 
-                        here are some sugar facts
+                        @RenderBody()
 
                     </div>
                     <br />
