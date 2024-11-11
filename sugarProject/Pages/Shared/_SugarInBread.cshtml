@@ -15,9 +15,9 @@
 
         <div>
             <ul>
-                <li><a href="mainPage.html">Home</a></li>
-                <li><a href="Secondary page.html">Secondary page</a></li>
-                <li><a href="sugarInBread.html">Sugar in bread</a></li>
+                <li><a asp-page="/main">Home</a></li>
+                <li><a asp-page="/secondaryPage">Secondary page</a></li>
+                <li><a asp-page="/sugarInBread">Sugar in bread</a></li>
                 <li><a href="">filler3</a></li>
 
             </ul>
@@ -53,7 +53,9 @@
 
                     </div>
                     <br />
-                    <img width="400px" src="..\imgs\breadSugar.jpg" />
+                    
+                    @RenderSection("img1", required: false)
+
                 </div>
             </div>
 
