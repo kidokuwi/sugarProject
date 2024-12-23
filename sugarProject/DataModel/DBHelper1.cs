@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Data;
 using Microsoft.Data.SqlClient;
-using sugarProject.Model;
+using sugarProject.DataModel;
 using sugarProject.Pages;
 using System.Reflection;
 using System.Data.Common;
