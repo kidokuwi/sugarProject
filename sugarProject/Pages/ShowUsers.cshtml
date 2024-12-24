@@ -43,7 +43,10 @@
 		<tbody>
 			@foreach (DataRow row in @Model.DataTableUsers.Rows)
 			{
+				
 				<tr>
+					
+
 					@foreach (string displayColumn in @Model.displayColumns)
 					{
 
@@ -55,4 +58,5 @@
 			}
 			</tbody>
 	</table>
+	<h3>Number of users: @Model.DataTableUsers.Rows.Count</h3>
 </div>
