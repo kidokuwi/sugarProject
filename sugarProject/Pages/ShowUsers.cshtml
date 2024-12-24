@@ -1,4 +1,58 @@
 ﻿@page
+@using System.Data;
 @model sugarProject.Pages.ShowUsersModel
 @{
+	
 }
+<style>
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	th, td {
+		border: 1px solid black;
+		padding: 8px;
+		text-align: center;
+		background-color: #fffeed;
+	}
+
+	th {
+		background-color: #f2f2f2;
+	}
+	.center{
+		padding-left:125px;
+		padding-right:125px;
+		width:40%;
+	}
+</style>
+<div>
+	<h1>User Table</h1>
+	<table>
+		<thead>
+			<tr>
+
+				
+				@foreach (string displayColumn in @Model.displayColumns)
+				{
+					<th>@displayColumn</th>
+				}
+
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (DataRow row in @Model.DataTableUsers.Rows)
+			{
+				<tr>
+					@foreach (string displayColumn in @Model.displayColumns)
+					{
+
+					
+						<td>@row[displayColumn]</td>
+						
+					}
+				</tr>
+			}
+			</tbody>
+	</table>
+</div>
