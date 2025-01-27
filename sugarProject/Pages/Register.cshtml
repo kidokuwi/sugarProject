@@ -1,0 +1,27 @@
+﻿@page
+@model sugarProject.Pages.RegisterModel
+@{
+}
+<script>
+    
+    function validate(){
+        return true;
+    }
+    function checkEmail(){
+
+    }
+</script>
+<h3>User Registration</h3>
+
+    <form name="regform" method="post" onsubmit="return validate();" onreset="resetForm();">
+
+        <label for="reg_email">Email</label>
+        <input type="text" asp-for="user.eMail" placeholder="abc.efg@gmail.co.il" oninput="checkEmail()" id="reg_email" style="float:right;" maxlength="25" />
+        <br />
+        <span id="reg_errormail" </span>
+        <br />
+
+        <button type="submit" name="submit" value="Register">Register</button>
+
+
+    </form>
