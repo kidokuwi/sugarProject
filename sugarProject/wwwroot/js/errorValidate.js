@@ -1,7 +1,13 @@
 ﻿function checkEmail() {
-    const emailElement = document.getElementById("reg_email")
+    const emailElement = document.getElementById("reg_email");
     const email = emailElement.value;
-
+    let errorEmail = document.getElementById("reg_errormail");
+    if (checkAtSymbol(email) && checkAtSymbol(email) && checkLen(email) && validateBadChars(email) && validateHebrew(email)) {
+        errorEmail.innerText = "";
+    }
+    else {
+        errorEmail.innerText = "bad email";
+    }
     return (checkAtSymbol(email) && checkAtSymbol(email) && checkLen(email) && validateBadChars(email) && validateHebrew(email))
 
 }
