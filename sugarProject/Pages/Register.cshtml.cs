@@ -27,7 +27,9 @@ namespace sugarProject.Pages
             st += $"<tr><td>User eatsWhiteBread</td> <td>{user.eatsWhiteBread}</td></tr>";
             st += $"<tr><td>User eats sugar</td> <td>{user.eatsSugarRegularly}</td></tr>";
             st += $"<tr><td>User prefix</td> <td>{user.prefix}</td></tr>";
-            st += $"<tr><td>User phoe</td> <td>{user.phone}</td></tr>";
+            st += $"<tr><td>User phone</td> <td>{user.phone}</td></tr>";
+            st += $"<tr><td>User gender</td> <td>!{user.gender}</td></tr>";
+
             st += "</table>";
         }
         
