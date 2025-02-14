@@ -3,43 +3,91 @@
 @{
 }
 <head>
-	<script src="~/js/errorvalidate.js"></script>
+    <script src="~/js/errorvalidate.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <script>
-    function validate(){
+    function validate() {
         return true;
     }
 </script>
 <div>
-    <h3 class="text-center" style="color: #FF7F50; font-weight: bold;">User Registration</h3>
-    <form name="regform" method="post" onsubmit="return validate();" onreset="resetForm();" class="needs-validation" novalidate>
+    <h3 class="text-center" style="color: #FF7F50; font-weight: bold;">
+        User
+        Registration
+    </h3>
+    <form name="regform" method="post" onsubmit="return validate();"
+          onreset="resetForm();" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="reg_email">Email</label>
-            <input type="email" asp-for="user.eMail" class="form-control" placeholder="abc.efg@gmail.co.il" oninput="checkEmail()" id="reg_email" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errormail">Please enter a valid email.</div>
+            <input type="email" asp-for="user.eMail" class="form-control"
+                   placeholder="abc.efg@gmail.co.il" oninput="checkEmail()"
+                   id="reg_email" maxlength="25" required />
+            <div class="invalid-feedback" id="reg_errormail">
+                Please enter a
+                valid email.
+            </div>
         </div>
         <div class="form-group">
             <label for="reg_password">Password</label>
-            <input type="password" asp-for="user.pass" class="form-control" id="reg_password" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errorpass">Please enter a password.</div>
+            <input type="password" asp-for="user.pass" class="form-control"
+                   id="reg_password" maxlength="25" required />
+            <div class="invalid-feedback" id="reg_errorpass">
+                Please enter a
+                password.
+            </div>
         </div>
         <div class="form-group">
             <label for="reg_fname">First Name</label>
-            <input type="text" asp-for="user.fName" class="form-control" id="reg_fname" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errorfname">Please enter your first name.</div>
+            <input type="text" asp-for="user.fName" class="form-control"
+                   id="reg_fname" maxlength="25" required />
+            <div class="invalid-feedback" id="reg_errorfname">
+                Please enter your
+                first name.
+            </div>
         </div>
         <div class="form-group">
             <label for="reg_lname">Last Name</label>
-            <input type="text" asp-for="user.lName" class="form-control" id="reg_lname" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errorlname">Please enter your last name.</div>
+            <input type="text" asp-for="user.lName" class="form-control"
+                   id="reg_lname" maxlength="25" required />
+            <div class="invalid-feedback" id="reg_errorlname">
+                Please enter your
+                last name.
+            </div>
         </div>
         <div class="form-group">
             <label for="reg_phone">Phone</label>
-            <input type="tel" asp-for="user.phone" class="form-control" id="reg_phone" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errorphone">Please enter your phone number.</div>
+            <input type="tel" asp-for="user.phone" class="form-control"
+                   id="reg_phone" maxlength="25" required />
+            <div class="invalid-feedback" id="reg_errorphone">
+                Please enter your
+                phone number.
+            </div>
         </div>
-        <button type="submit" name="submit" value="Register" class="btn btn-primary btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">Register</button>
+
+        <div class="form-group">
+            <label for="reg_lname">Gender: </label>
+
+
+            Male
+            <input asp-for="user.gender" type="radio" value="Male" id="reg_gender" style="margin-right: 15px;">
+            Female
+            <input asp-for="user.gender" type="radio" value="Female" style="margin-right: 15px;">
+            Other
+            <input asp-for="user.gender" type="radio" value="Other" style="margin-right: 15px;">
+
+            <div class="invalid-feedback" id="reg_errorgender">
+                Please enter your Gender.
+            </div>
+        </div>
+
+        <button type="submit" name="submit" value="Register" class="btn btnprimary
+btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">
+            Register
+        </button>
     </form>
-    @Html.Raw(@Model.st)
+    <div class="table table-striped table-bordered table-hover table-dark table-responsive">
+        @Html.Raw(@Model.st)
+
+    </div>
 </div>
