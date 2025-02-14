@@ -4,8 +4,21 @@ function checkEmail() {
     let errorEmail = document.getElementById("reg_errormail");
     const emailElement = document.getElementById("reg_email");
     const email = emailElement.value;
+
+    checkAtSymbol(email);
+    checkDot(email);
+    checkLen(email);
+    validateBadChars(email);
+    validateHebrew(email);
     if (checkAtSymbol(email) && checkDot(email) && checkLen(email) && validateBadChars(email) && validateHebrew(email)) {
         errorEmail.innerHTML = "";
+        emailElement.classList.remove("is-invalid"); // this for bootstrap things
+        emailElement.classList.add("is-valid");
+        return true;
+    } else {
+        emailElement.classList.add("is-invalid");
+        emailElement.classList.remove("is-valid");
+        return false;
     }
     return (checkAtSymbol(email) && checkDot(email) && checkLen(email) && validateBadChars(email) && validateHebrew(email))
 
@@ -68,7 +81,7 @@ function validateBadChars(str1) {
     let l = badCh.length;
 
     for (let i = 0; i < l; i++) {
-        for (let j = 0; j < str1.length; i++) {
+        for (let j = 0; j < str1.length; j++) {
             if (str1.charAt(j) == badCh.charAt(i)) {
                 errorEmail.innerHTML = "bad chars";
                 return false;
