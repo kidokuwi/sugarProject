@@ -7,16 +7,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <script>
-    function validate() {
-        return true;
+    function validate(event) {
+        let isEmailValid = checkEmail();
+        let isGenderValid = checkGender();
+        let isPhoneValid = checkPhone();
+
+        if (!isEmailValid || !isGenderValid || !isPhoneValid) {
+            event.preventDefault();
+            event.stopPropagation();
+            form.classList.add("was-validated");
+        } else {
+            form.classList.add("was-validated");
+        }
+
+        return isEmailValid && isGenderValid && isPhoneValid;
     }
+
+
 </script>
 <div>
     <h3 class="text-center" style="color: #FF7F50; font-weight: bold;">
         User
         Registration
     </h3>
-    <form name="regform" method="post" onsubmit="return validate();"
+    <form name="regform" method="post" onsubmit="return validate(event);"
           onreset="resetForm();" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="reg_email">Email</label>
@@ -54,32 +68,46 @@
                 Please enter your
                 last name.
             </div>
-        </div>
+            <div class="form-group">
+                <label for="reg_phone">Phone</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select asp-for="user.prefix" class="form-select" id="reg_phone_prefix" required>
+                            <option value="" disabled selected>Prefix</option>
+                            <option value="1">+1 (USA)</option>
+                            <option value="44">+44 (UK)</option>
+                            <option value="33">+33 (France)</option>
+                            <option value="972">+972 (Israel)</option>
+                            <option value="91">+91 (India)</option>
+                            <option value="61">+61 (Australia)</option>               
+                        </select>
+                    </div>
+                    <input type="tel" asp-for="user.phone" class="form-control"
+                           id="reg_phone" maxlength="15" required />
+                </div>
+                <div class="invalid-feedback" id="reg_errorphone">
+                    Please select a prefix and enter a valid phone number.
+                </div>
+            </div>
+
+
         <div class="form-group">
-            <label for="reg_phone">Phone</label>
-            <input type="tel" asp-for="user.phone" class="form-control"
-                   id="reg_phone" maxlength="25" required />
-            <div class="invalid-feedback" id="reg_errorphone">
-                Please enter your
-                phone number.
+            <label for="reg_gender">Gender:</label>
+            <br>
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Male" id="reg_gender_male">
+            <label for="reg_gender_male">Male</label>
+
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Female" id="reg_gender_female">
+            <label for="reg_gender_female">Female</label>
+
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Other" id="reg_gender_other">
+            <label for="reg_gender_other">Other</label>
+
+            <div class="invalid-feedback d-none" id="reg_errorgender">
+                Please select a gender.
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="reg_lname">Gender: </label>
-
-
-            Male
-            <input asp-for="user.gender" type="radio" value="Male" id="reg_gender" style="margin-right: 15px;">
-            Female
-            <input asp-for="user.gender" type="radio" value="Female" style="margin-right: 15px;">
-            Other
-            <input asp-for="user.gender" type="radio" value="Other" style="margin-right: 15px;">
-
-            <div class="invalid-feedback" id="reg_errorgender">
-                Please enter your Gender.
-            </div>
-        </div>
 
         <button type="submit" name="submit" value="Register" class="btn btnprimary
 btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">

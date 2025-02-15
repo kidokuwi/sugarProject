@@ -1,27 +1,31 @@
 ﻿function checkEmail() {
-    let error = "";
     let errorEmail = document.getElementById("reg_errormail");
     const emailElement = document.getElementById("reg_email");
     const email = emailElement.value;
-    checkAtSymbol(email);
-    checkDot(email);
-    checkLen(email);
-    validateBadChars(email);
-    validateHebrew(email);
-    if (checkAtSymbol(email) && checkDot(email) && checkLen(email) &&
-        validateBadChars(email) && validateHebrew(email)) {
-        errorEmail.innerHTML = "";
-        emailElement.classList.remove("is-invalid"); // this for bootstrap things
-        emailElement.classList.add("is-valid");
-        return true;
-    } else {
+
+    let errorMsg = [];
+
+    if (!checkAtSymbol(email)) errorMsg.push("Missing '@'.");
+    if (!checkDot(email)) errorMsg.push("Invalid dot placement.");
+    if (!checkLen(email)) errorMsg.push("Email too short.");
+    if (!validateBadChars(email)) errorMsg.push("Invalid characters.");
+    if (!validateHebrew(email)) errorMsg.push("No Hebrew characters allowed.");
+
+    if (errorMsg.length > 0) {
+        errorEmail.innerHTML = errorMsg.join("<br>");
+        errorEmail.style.display = "block";
         emailElement.classList.add("is-invalid");
         emailElement.classList.remove("is-valid");
         return false;
+    } else {
+        errorEmail.innerHTML = "";
+        errorEmail.style.display = "none";
+        emailElement.classList.remove("is-invalid");
+        emailElement.classList.add("is-valid"); // ✅ Adds Bootstrap valid icon
+        return true;
     }
-    return (checkAtSymbol(email) && checkDot(email) && checkLen(email) &&
-        validateBadChars(email) && validateHebrew(email))
 }
+
 function checkLen(str1) {
     let errorEmail = document.getElementById("reg_errormail");
     if (str1.length > 6) {
@@ -75,3 +79,59 @@ function validateBadChars(str1) {
     }
     return true;
 }
+
+
+function checkGender() {
+    const radioButtons = document.getElementsByName('user.gender'); // Make sure this matches the ASP.NET field name
+    let errorGender = document.getElementById("reg_errorgender");
+    let isSet = false;
+
+    for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            isSet = true;
+            break;
+        }
+    }
+
+    if (isSet) {
+        errorGender.style.display = "none"; // Hide error message
+        errorGender.classList.remove("d-block");
+        return true;
+    } else {
+        errorGender.innerHTML = "Please select a gender.";
+        errorGender.style.display = "block"; // Show error message
+        errorGender.classList.add("d-block", "text-danger"); // Ensure it's displayed
+        return false;
+    }
+}
+function checkPhone() {
+    const phonePrefix = document.getElementById("reg_phone_prefix");
+    const phoneInput = document.getElementById("reg_phone");
+    const errorPhone = document.getElementById("reg_errorphone");
+
+    if (!phonePrefix.value) {
+        errorPhone.innerHTML = "Please select a country prefix.";
+        phonePrefix.classList.add("is-invalid");
+        phonePrefix.classList.remove("is-valid");
+        return false;
+    } else {
+        phonePrefix.classList.remove("is-invalid");
+        phonePrefix.classList.add("is-valid");
+    }
+
+    if (phoneInput.value.length < 7 || phoneInput.value.length > 15) {
+        errorPhone.innerHTML = "Please enter a valid phone number.";
+        phoneInput.classList.add("is-invalid");
+        phoneInput.classList.remove("is-valid");
+        return false;
+    } else {
+        phoneInput.classList.remove("is-invalid");
+        phoneInput.classList.add("is-valid");
+    }
+
+    errorPhone.innerHTML = "";
+    return true;
+}
+
+
+
