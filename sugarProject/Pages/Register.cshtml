@@ -89,16 +89,16 @@
                     <div class="input-group-prepend">
                         <select asp-for="user.prefix" class="form-select" id="reg_phone_prefix" required>
                             <option value="0" disabled selected>Prefix</option> 
-                            <option value="1">+1 (USA)</option> <!-- TODO: ADD DB -->
-                            <option value="44">+44 (UK)</option>
-                            <option value="33">+33 (France)</option>
-                            <option value="972">+972 (Israel)</option>
-                            <option value="91">+91 (India)</option>
-                            <option value="61">+61 (Australia)</option>               
+                            <option value="1">+1</option> <!-- TODO: ADD DB -->
+                            <option value="44">+44</option>
+                            <option value="33">+33</option>
+                            <option value="972">+972</option>
+                            <option value="91">+91</option>
+                            <option value="61">+61</option>               
                         </select>
                     </div>
                     <input type="tel" asp-for="user.phone" class="form-control"
-                           id="reg_phone" maxlength="15" required />
+                           id="reg_phone" oninput="checkPhone()" maxlength="15" required />
                 </div>
                 <div class="invalid-feedback" id="reg_errorphone">
                     Please select a prefix and enter a valid phone number.
