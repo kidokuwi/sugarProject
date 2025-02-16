@@ -160,22 +160,80 @@ function checkYearBorn() {
     errorYear.style.display = "none";
     return true;
 }
+
+
 function checkPass() {
     const password = document.getElementById("reg_password");
     const confirm = document.getElementById("reg_password2");
-    const errorConfirm = document.getElementById("reg_errorpass2"); 
+    const errorConfirm = document.getElementById("reg_errorpass2");
 
-    if (password.value !== confirm.value) {
+    if (password.value.length < 6)
+    {
+        errorConfirm.innerHTML = "Password too short";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    }
+    else if (password.value.length > 20) {
+        errorConfirm.innerHTML = "Password too long";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+
+    }
+
+    let hasUpperCase = false;
+    let hasLowerCase = false;
+    let hasNumber = false;
+
+    for (let i = 0; i < password.value.length; i++) {
+        const char = password.value.charAt(i);
+        if (char >= 'A' && char <= 'Z') hasUpperCase = true;
+        if (char >= 'a' && char <= 'z') hasLowerCase = true;
+        if (char >= '0' && char <= '9') hasNumber = true;
+    }
+
+    if (!hasUpperCase) {
+        errorConfirm.innerHTML = "Password must contain at least one capital letter";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    } else if (!hasLowerCase) {
+        errorConfirm.innerHTML = "Password must contain at least one non-capital letter";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    } else if (!hasNumber) {
+        errorConfirm.innerHTML = "Password must contain at least one number";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    }
+    else if (!validateBadChars(password.value))
+    {
+        errorConfirm.innerHTML = "Invalid characters";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    } 
+    if (password.value != confirm.value) {
         errorConfirm.innerHTML = "Passwords do not match";
         errorConfirm.style.display = "block";
         confirm.classList.add("is-invalid");
         confirm.classList.remove("is-valid");
         return false;
-    } else {
-        errorConfirm.innerHTML = "";
-        errorConfirm.style.display = "none";
-        confirm.classList.remove("is-invalid");
-        confirm.classList.add("is-valid");
-        return true;
     }
+
+    errorConfirm.innerHTML = "";
+    errorConfirm.style.display = "none";
+    confirm.classList.remove("is-invalid");
+    confirm.classList.add("is-valid");
+    return true;
+    
 }
