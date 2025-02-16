@@ -60,7 +60,7 @@
 		<div class="form-group">
 			<label for="reg_password2">Confirm Password</label>
 			<input type="password" class="form-control"
-				   id="reg_password2" maxlength="25" required/>
+				   id="reg_password2" oninput="checkPass()" maxlength="25" required/>
 			<div class="invalid-feedback" id="reg_errorpass2">
 				Please confirm your
 				password.

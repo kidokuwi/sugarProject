@@ -6,7 +6,7 @@
     let errorMsg = [];
 
     if (!checkAtSymbol(email))
-        errorMsg.push("Missing '@'.");
+        errorMsg.push("invalid or multiple @ .");
     if (!checkDot(email))
         errorMsg.push("Invalid dot placement.");
     if (!checkLen(email))
@@ -25,8 +25,8 @@
     } else {
         errorEmail.innerHTML = "";
         errorEmail.style.display = "none";
-        emailElement.classList.remove("is-invalid");
-        emailElement.classList.add("is-valid"); // ✅ Adds Bootstrap valid icon
+        emailElement.classList.remove("is-invalid"); //remove invalid icon
+        emailElement.classList.add("is-valid"); // add Bootstrap valid icon
         return true;
     }
 }
