@@ -5,11 +5,16 @@
 
     let errorMsg = [];
 
-    if (!checkAtSymbol(email)) errorMsg.push("Missing '@'.");
-    if (!checkDot(email)) errorMsg.push("Invalid dot placement.");
-    if (!checkLen(email)) errorMsg.push("Email too short.");
-    if (!validateBadChars(email)) errorMsg.push("Invalid characters.");
-    if (!validateHebrew(email)) errorMsg.push("No Hebrew characters allowed.");
+    if (!checkAtSymbol(email))
+        errorMsg.push("Missing '@'.");
+    if (!checkDot(email))
+        errorMsg.push("Invalid dot placement.");
+    if (!checkLen(email))
+        errorMsg.push("Email too short.");
+    if (!validateBadChars(email))
+        errorMsg.push("Invalid characters.");
+    if (!validateHebrew(email))
+        errorMsg.push("No Hebrew characters allowed.");
 
     if (errorMsg.length > 0) {
         errorEmail.innerHTML = errorMsg.join("<br>");
@@ -98,7 +103,7 @@ function checkGender() {
         errorGender.classList.remove("d-block");
         return true;
     } else {
-        errorGender.innerHTML = "Please select a gender.";
+        errorGender.innerHTML = "Please select a gender";
         errorGender.style.display = "block"; // Show error message
         errorGender.classList.add("d-block", "text-danger"); // Ensure it's displayed
         return false;
@@ -112,7 +117,7 @@ function checkPhone() {
     const errorPhone = document.getElementById("reg_errorphone");
 
     if (phonePrefix.value == "0") {
-        errorPhone.innerHTML = "Please select a country prefix.";
+        errorPhone.innerHTML = "Please select a country prefix";
         errorPhone.style.display = "block";
         phonePrefix.classList.add("is-invalid");
         phonePrefix.classList.remove("is-valid");
@@ -123,7 +128,7 @@ function checkPhone() {
     }
 
     if (phoneInput.value.length != 10) {
-        errorPhone.innerHTML = "Please enter a valid phone number.";
+        errorPhone.innerHTML = "Please enter a valid phone number";
         errorPhone.style.display = "block";
         phoneInput.classList.add("is-invalid");
         phoneInput.classList.remove("is-valid");
@@ -138,5 +143,39 @@ function checkPhone() {
     return true;
 }
 
+function checkYearBorn() {
+    const yearBorn = document.getElementById("reg_yearborn");
+    const errorYear = document.getElementById("reg_erroryearborn");
+    if (yearBorn.value == "0") {
+        errorYear.innerHTML = "Please select a year";
+        errorYear.style.display = "block";
+        yearBorn.classList.add("is-invalid");
+        yearBorn.classList.remove("is-valid");
+        return false;
+    } else {
+        yearBorn.classList.remove("is-invalid");
+        yearBorn.classList.add("is-valid");
+    }
+    errorYear.innerHTML = "";
+    errorYear.style.display = "none";
+    return true;
+}
+function checkPass() {
+    const password = document.getElementById("reg_password");
+    const confirm = document.getElementById("reg_password2");
+    const errorConfirm = document.getElementById("reg_errorpass2"); 
 
-
+    if (password.value !== confirm.value) {
+        errorConfirm.innerHTML = "Passwords do not match";
+        errorConfirm.style.display = "block";
+        confirm.classList.add("is-invalid");
+        confirm.classList.remove("is-valid");
+        return false;
+    } else {
+        errorConfirm.innerHTML = "";
+        errorConfirm.style.display = "none";
+        confirm.classList.remove("is-invalid");
+        confirm.classList.add("is-valid");
+        return true;
+    }
+}

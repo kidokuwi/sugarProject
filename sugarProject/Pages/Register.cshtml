@@ -8,19 +8,23 @@
 </head>
 <script>
     function validate(event) {
+		let isPassValid = checkPass();
         let isEmailValid = checkEmail();
         let isGenderValid = checkGender();
         let isPhoneValid = checkPhone();
-
-        if (!isEmailValid || !isGenderValid || !isPhoneValid) {
+        let isYearbornValid = checkYearBorn();
+        
+        if (!isEmailValid || !isGenderValid || !isPhoneValid || !isPassValid || !isYearbornValid) 
+        {
             event.preventDefault();
             event.stopPropagation();
             form.classList.add("was-validated");
-        } else {
+        }
+        else {
             form.classList.add("was-validated");
         }
 
-        return isEmailValid && isGenderValid && isPhoneValid;
+        return isEmailValid && isGenderValid && isPhoneValid && isPassValid && isYearbornValid;
     }
 
 
@@ -51,6 +55,16 @@
                 password.
             </div>
         </div>
+
+		<div class="form-group">
+			<label for="reg_password2">Confirm Password</label>
+			<input type="password" class="form-control"
+				   id="reg_password2" maxlength="25" required />
+			<div class="invalid-feedback" id="reg_errorpass2">
+				Please confirm your
+				password.
+			</div>
+
         <div class="form-group">
             <label for="reg_fname">First Name</label>
             <input type="text" asp-for="user.fName" class="form-control"
@@ -73,8 +87,8 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <select asp-for="user.prefix" class="form-select" id="reg_phone_prefix" required>
-                            <option value="0" disabled selected>Prefix</option>
-                            <option value="1">+1 (USA)</option>
+                            <option value="0" disabled selected>Prefix</option> 
+                            <option value="1">+1 (USA)</option> <!-- TODO: ADD DB -->
                             <option value="44">+44 (UK)</option>
                             <option value="33">+33 (France)</option>
                             <option value="972">+972 (Israel)</option>
@@ -107,6 +121,36 @@
                 Please select a gender.
             </div>
         </div>
+
+
+
+        <div class="form-group">
+            <label for="reg_yearBorn">Year Born:</label>
+            <select asp-for="user.yearBorn" class="form-control" id="reg_yearborn" required>
+                <option value="0" disabled selected>select year born</option>
+                @for (int year = 1960; year <= 2025; year++)
+                {
+                    <option value="@year">@year</option>
+                }
+            </select>
+            <div class="invalid-feedback" id="reg_erroryearborn">
+                Please select a valid year.
+            </div>
+        </div>
+
+
+        <div>
+            <label for="reg_health">AM I HEALTHY</label>
+            <br />
+                <div class="form-check form-check-inline">
+                    <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="user.doesSports" id="reg_sport" />
+                    <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsWhiteBread" id="reg_whitebread" />
+                    <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsSugarRegularly" id="reg_sugar" />
+                </div>
+			
+        </div>
+
+
 
 
         <button type="submit" name="submit" value="Register" class="btn btnprimary
