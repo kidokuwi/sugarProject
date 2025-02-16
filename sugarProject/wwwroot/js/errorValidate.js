@@ -104,13 +104,16 @@ function checkGender() {
         return false;
     }
 }
+
+
 function checkPhone() {
     const phonePrefix = document.getElementById("reg_phone_prefix");
     const phoneInput = document.getElementById("reg_phone");
     const errorPhone = document.getElementById("reg_errorphone");
 
-    if (!phonePrefix.value) {
+    if (phonePrefix.value == "0") {
         errorPhone.innerHTML = "Please select a country prefix.";
+        errorPhone.style.display = "block";
         phonePrefix.classList.add("is-invalid");
         phonePrefix.classList.remove("is-valid");
         return false;
@@ -119,8 +122,9 @@ function checkPhone() {
         phonePrefix.classList.add("is-valid");
     }
 
-    if (phoneInput.value.length < 7 || phoneInput.value.length > 15) {
+    if (phoneInput.value.length != 10) {
         errorPhone.innerHTML = "Please enter a valid phone number.";
+        errorPhone.style.display = "block";
         phoneInput.classList.add("is-invalid");
         phoneInput.classList.remove("is-valid");
         return false;
@@ -130,6 +134,7 @@ function checkPhone() {
     }
 
     errorPhone.innerHTML = "";
+    errorPhone.style.display = "none";
     return true;
 }
 
