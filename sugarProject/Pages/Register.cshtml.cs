@@ -9,6 +9,8 @@ namespace sugarProject.Pages
         [BindProperty]
         public User user { get; set; }
         public string st {  get; set; }
+
+        public string[] prefixes { get; set; } = { "972", "1", "41", "89", "23", "99", "73", "55" };
         public void OnGet()
         {
         }
