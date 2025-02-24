@@ -1,3 +1,4 @@
+using ClassicCarsRazor.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using sugarProject.DataModel;
@@ -10,11 +11,14 @@ namespace sugarProject.Pages
         public User user { get; set; }
         public string st {  get; set; }
 
-        public string[] prefixes { get; set; } = { "972", "1", "41", "89", "23", "99", "73", "55" };
+        public string errorMessage { get; set; }
+
+        public string[] prefixes { get; set; } = { "053", "054", "052", "055", "056", "057", "058", "059" };
         public void OnGet()
         {
         }
-        public void OnPost()
+    
+        public IActionResult OnPost()
         {
             st = "<table>";
             st += "<tr><td colspan='2' style='text-align:center'>Form Data</td></tr>";
@@ -33,8 +37,17 @@ namespace sugarProject.Pages
             st += $"<tr><td>User gender</td> <td>{user.gender}</td></tr>";
 
             st += "</table>";
+
+            DBHelper dB = new DBHelper();
+            int numRowsAffected = dB.Insert(user, "users");
+            if (numRowsAffected != 1)
+            {
+                errorMessage = "This email is already registered";
+                return Page();
+            }
+            return RedirectToPage("/index");
         }
-        
-        
+
+
     }
 }

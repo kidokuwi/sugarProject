@@ -129,7 +129,7 @@ function checkPhone() {
         phonePrefix.classList.add("is-valid");
     }
 
-    if (phoneInput.value.length != 10) {
+    if (phoneInput.value.length != 7) {
         errorPhone.innerHTML = "Please enter a valid phone number";
         errorPhone.style.display = "block";
         phoneInput.classList.add("is-invalid");
