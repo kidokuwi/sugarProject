@@ -11,29 +11,34 @@ namespace sugarProject.Pages
     {
 		public DataTable? DataTableUsers { get; set; }
 
+		[BindProperty]
 		public string filterColumn { get; set; }
+
+		[BindProperty]
 		public string filterValue { get; set; }
 
 		public string[] displayColumns { get; set; } = ["Id", "uName","lName", "fName", "eMail", "yearBorn", "prefix", "phone", "pass"];
 		public IActionResult OnGet()
 		{
+			filterColumn = "";
+			filterValue = "";
+
 			DBHelper db = new DBHelper();
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
-
 			DataTableUsers = db.RetrieveTable(sqlQuery, "users");
-
 			return Page();
-
 		}
+
 		public IActionResult OnPost()
 		{
 			DBHelper db = new DBHelper();
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
 			if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(filterValue))
 			{
-				sqlQuery += $" WHERE [{filterColumn}] LIKE '%{filterValue}%'\r\n";
+				sqlQuery += $" WHERE {filterColumn} LIKE '%{filterValue}%'\r\n";
+
 			}
-			
+
 			DataTableUsers = db.RetrieveTable(sqlQuery, "users");
 			return Page();
 		}

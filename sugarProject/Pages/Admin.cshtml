@@ -18,7 +18,7 @@
 <div>
 	<h1>User Table</h1>
 
-	<form class="form-check" method="post">
+	<form class="form" method="post">
 		<input asp-for="filterValue" class="form-control" placeholder="Enter filter value" />
 
 		<select asp-for="filterColumn" class="form-control">
@@ -29,8 +29,8 @@
 			<option value="eMail">Email</option>
 		</select>
 
-		<button type="submit" class="btn btn-group-lg btn-block"
-				style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">
+		<button type="submit" class="btn btn-primary btn-block"
+				style="opacity: 0.8;">
 			Filter
 		</button>
 	</form>
