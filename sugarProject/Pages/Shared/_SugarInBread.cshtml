@@ -3,9 +3,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    
+	<script src="~/js/time.js"></script>
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
+<script>
+    window.onload = (event) => {
+		setInterval(displayTime, 1000);
+    }
+</script>
 <body style="background-color:burlywood; margin: 0px;">
 
     <div class="PageLayout">
@@ -14,15 +19,17 @@
 
 
         <div>
-            <ul style="margin:0px; padding:0px;">
+            <ul style="display: flex; margin: 0; padding: 0; list-style: none;">
                 <li><a asp-page="/index">Home</a></li>
                 <li><a asp-page="/secondaryPage">Secondary page</a></li>
                 <li><a asp-page="/sugarInBread">Sugar in bread</a></li>
-                <li><a asp-page="/ShowUsers">show users</a></li>
+                <li><a asp-page="/ShowUsers">Show users</a></li>
                 <li><a asp-page="/Register">Register</a></li>
+                <li style="margin-left: auto; margin-right: 10px; margin-top: 10px;"><div class="list-inline-item" id="time"></div></li>
             </ul>
         </div>
         <br />
+
 
 
 
