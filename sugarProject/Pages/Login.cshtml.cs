@@ -27,6 +27,8 @@ namespace sugarProject.Pages
 			else
 			{
 				return RedirectToPage("/index");
+				VisitorService VS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<VisitorService>();
+				VS.IncrementVisitorCount();
 			}
 
 			}

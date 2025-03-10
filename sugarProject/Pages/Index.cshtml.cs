@@ -7,6 +7,8 @@ namespace sugarProject.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+      
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -14,7 +16,8 @@ namespace sugarProject.Pages
 
         public void OnGet()
         {
-
+			VisitorService VS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<VisitorService>();
+			VS.IncrementVisitorCount();
         }
     }
 }
