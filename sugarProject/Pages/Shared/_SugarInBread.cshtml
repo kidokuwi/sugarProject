@@ -25,7 +25,16 @@
                 <li><a asp-page="/ShowUsers">Show users</a></li>
                 <li><a asp-page="/Register">Register</a></li>
                 <li style="margin-left: 900px; display: inline-flex; align-items: center;">
-                    Welcome @ViewData["UserName"], <a asp-page="/Login">Login</a>
+                    Welcome @ViewData["UserName"],
+                    @{
+						if (ViewData["UserName"] != "Guest")
+						{
+							<a asp-page="/Logout">Logout</a>
+						}
+						else{
+                            <a asp-page="/Login">Login</a>
+                        }
+                    }      
                 </li>
                 <li style="margin-left: auto; margin-right: 10px; margin-top: 14px;"><div class="list-inline-item" id="time"></div></li>
             </ul>
