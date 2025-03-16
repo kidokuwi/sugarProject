@@ -1,3 +1,4 @@
+using sugarProject.DataModel;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,6 @@ builder.Services.AddRazorPages();
 
 
 
-builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -19,15 +19,19 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddMemoryCache();
+
+
 var app = builder.Build();
 ServiceProviderAccessor.ServiceProvider = app.Services;
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
 }
+app.UseSession();
+
 app.UseStaticFiles();
 
 app.UseRouting();
