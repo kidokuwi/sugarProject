@@ -25,6 +25,12 @@ builder.Services.AddMemoryCache();
 var app = builder.Build();
 ServiceProviderAccessor.ServiceProvider = app.Services;
 
+
+//cookie
+CookieOptions cookieOptions = new CookieOptions();
+cookieOptions.Expires = DateTime.Now.AddHours(6);
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

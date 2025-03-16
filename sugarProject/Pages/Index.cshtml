@@ -19,6 +19,35 @@
 
 	<span>Total visitors: @visitorService.GetVisitorCount()</span>
 	<span>total logins: @loginService.GetloginCount()</span>
-	<span>@Model.fName</span>
+	<span>session: @Model.fName</span>
+	<span>cookie: @Model.cookieValue</span>
+    <div> 
+        local storage
+        <div id="num">0</div>
+        <button id="button">increase</button>
+
+        <script>
+            // i used the help of https://www.youtube.com/watch?v=EXctz9fYwWM
+            const val = document.getElementById('num');
+            const button = document.getElementById('button');
+
+            function onPageLoad() {
+              const savedVal = localStorage.getItem('num');
+              if (savedVal !== null) {
+                val.innerText = savedVal;
+              }
+            }
+
+            onPageLoad();
+
+            function increment() {
+              const newVal = parseInt(val.innerText) + 1;
+              val.innerText = newVal;
+              localStorage.setItem('num', newVal);
+            }
+
+            button.addEventListener('click', increment);
+        </script>
+    </div>
 }
 <img width="500" src="~/imgs/breadsugar.jpg" />

@@ -25,6 +25,7 @@ namespace sugarProject.Pages
 
 			if (userTable.Rows.Count != 1)
 			{
+				Response.Cookies.Delete("fName");
 				return RedirectToPage("/Register");
 
 			}
@@ -32,6 +33,7 @@ namespace sugarProject.Pages
 			LS.IncrementloginCount();
 			string fName = userTable.Rows[0]["fName"].ToString();
 			HttpContext.Session.SetString("fName", fName);
+			Response.Cookies.Append("fName", HttpContext.Session.GetString("fName"));
 			return RedirectToPage("/index");
 			
 		}
@@ -41,12 +43,12 @@ namespace sugarProject.Pages
 
 			if (HttpContext.Session.GetString("fName") == null)
 			{
-				;
 				ViewData["UserName"] = "Guest";
+				Response.Cookies.Delete("fName");
 			}
 			else
 			{
-				ViewData["UserName"] = HttpContext.Session.GetString("fName");
+				ViewData["UserName"] = HttpContext.Session.GetString("fName");	
 			}
 		}
     }

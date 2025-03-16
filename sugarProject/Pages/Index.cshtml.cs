@@ -7,7 +7,7 @@ namespace sugarProject.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         public string fName { get; set; }
-
+		public string cookieValue { get; set; }
 
 		public IndexModel(ILogger<IndexModel> logger)
         {
@@ -16,13 +16,14 @@ namespace sugarProject.Pages
 
         public void OnGet()
         {
-
+			cookieValue = Request.Cookies["fName"];
 			VisitorService VS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<VisitorService>();
 			VS.IncrementVisitorCount();
             if (HttpContext.Session.GetString("fName") == null)
 			{
 				fName = "Guest";
 				ViewData["UserName"] = fName;
+				Response.Cookies.Delete("fName");
 			}
 			else
 			{
