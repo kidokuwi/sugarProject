@@ -14,7 +14,7 @@ namespace sugarProject.Pages
 		[BindProperty]
 		public string? login_password { get; set; }
 
-        public IActionResult OnPost()
+		public IActionResult OnPost()
 		{
 			DBHelper db = new DBHelper();
 			DataTable userTable;
@@ -25,10 +25,9 @@ namespace sugarProject.Pages
 			{
 				return RedirectToPage("/Register");
 
-			return RedirectToPage("/index");
-			
-
 			}
+			return RedirectToPage("/index");
+		}
 		public void OnGet()
         {
         }
