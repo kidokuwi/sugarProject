@@ -24,7 +24,6 @@ namespace sugarProject.Pages
 			if (userTable.Rows.Count != 1)
 			{
 				return RedirectToPage("/Register");
-			}
 
 			return RedirectToPage("/index");
 			
