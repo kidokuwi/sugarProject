@@ -8,9 +8,10 @@ namespace sugarProject.Pages
 {
     public class LoginModel : PageModel
     {
-		public User user { get; set; }
+		[BindProperty]
+		public string? login_email { get; set; }
 
-        public string? login_email { get; set; }
+		[BindProperty]
 		public string? login_password { get; set; }
 
         public IActionResult OnPost()
@@ -22,12 +23,11 @@ namespace sugarProject.Pages
 
 			if (userTable.Rows.Count != 1)
 			{
-				return Page();
+				return RedirectToPage("/Register");
 			}
-			else
-			{
-				return RedirectToPage("/index");
-			}
+
+			return RedirectToPage("/index");
+			
 
 			}
 		public void OnGet()

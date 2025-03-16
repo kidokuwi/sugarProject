@@ -14,4 +14,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\js\errorValidateLogin.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

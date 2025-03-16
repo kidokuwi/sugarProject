@@ -35,7 +35,7 @@ namespace sugarProject.Pages
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
 			if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(filterValue))
 			{
-				sqlQuery += $" WHERE {filterColumn} LIKE '%{filterValue}%'\r\n";
+				sqlQuery += $" WHERE {filterColumn} LIKE '%{filterValue}%'";
 
 			}
 
