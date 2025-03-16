@@ -30,12 +30,24 @@ namespace sugarProject.Pages
 			}
 
 			LS.IncrementloginCount();
+			string fName = userTable.Rows[0]["fName"].ToString();
+			HttpContext.Session.SetString("fName", fName);
 			return RedirectToPage("/index");
 			
 		}
 		public void OnGet()
         {
 			LoginService LS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<LoginService>();
+
+			if (HttpContext.Session.GetString("fName") == null)
+			{
+				;
+				ViewData["UserName"] = "Guest";
+			}
+			else
+			{
+				ViewData["UserName"] = HttpContext.Session.GetString("fName");
+			}
 		}
     }
 }

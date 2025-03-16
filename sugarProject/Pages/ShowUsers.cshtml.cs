@@ -14,7 +14,15 @@ namespace sugarProject.Pages
 			DBHelper db = new DBHelper();
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
 			DataTableUsers = db.RetrieveTable(sqlQuery, "users");
-
+			if (HttpContext.Session.GetString("fName") == null)
+			{
+				;
+				ViewData["UserName"] = "Guest";
+			}
+			else
+			{
+				ViewData["UserName"] = HttpContext.Session.GetString("fName");
+			}
 			return Page();
 
 		}

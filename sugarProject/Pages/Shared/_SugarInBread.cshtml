@@ -16,9 +16,7 @@
 
     <div class="PageLayout">
 
-
-
-
+       
         <div>
             <ul style="display: flex; margin: 0; padding: 0; list-style: none;">
                 <li><a asp-page="/index">Home</a></li>
@@ -27,7 +25,7 @@
                 <li><a asp-page="/ShowUsers">Show users</a></li>
                 <li><a asp-page="/Register">Register</a></li>
                 <li style="margin-left: 900px; display: inline-flex; align-items: center;">
-                    Welcome guest, <a asp-page="/Login">Login</a>
+                    Welcome @ViewData["UserName"], <a asp-page="/Login">Login</a>
                 </li>
                 <li style="margin-left: auto; margin-right: 10px; margin-top: 14px;"><div class="list-inline-item" id="time"></div></li>
             </ul>

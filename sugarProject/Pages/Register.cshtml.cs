@@ -16,7 +16,16 @@ namespace sugarProject.Pages
         public string[] prefixes { get; set; } = { "053", "054", "052", "055", "056", "057", "058", "059" };
         public void OnGet()
         {
-        }
+			if (HttpContext.Session.GetString("fName") == null)
+			{
+				;
+				ViewData["UserName"] = "Guest";
+			}
+			else
+			{
+				ViewData["UserName"] = HttpContext.Session.GetString("fName");
+			}
+		}
     
         public IActionResult OnPost()
         {
