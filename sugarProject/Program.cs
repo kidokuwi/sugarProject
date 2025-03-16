@@ -3,15 +3,14 @@ using System.Security.Cryptography;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<VisitorService>();
+builder.Services.AddSingleton<LoginService>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
 
 
-ServiceProviderAccessor.ServiceProvider = app.Services;
-
+builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -20,7 +19,10 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddMemoryCache();
+var app = builder.Build();
+ServiceProviderAccessor.ServiceProvider = app.Services;
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -46,5 +48,12 @@ public class VisitorService
     public int GetVisitorCount() => _visitorCount;
 
     public void IncrementVisitorCount() => _visitorCount++;
+}
+public class LoginService
+{
+	private int _loginCount = 0;
+	public int GetloginCount() => _loginCount;
+
+	public void IncrementloginCount() => _loginCount++;
 }
 

@@ -15,6 +15,9 @@
 </style>
 @{
 	VisitorService visitorService = ServiceProviderAccessor.ServiceProvider.GetService<VisitorService>();
+	LoginService loginService = ServiceProviderAccessor.ServiceProvider.GetService<LoginService>();
+
 	<span>Total visitors: @visitorService.GetVisitorCount()</span>
+	<span>total logins: @loginService.GetloginCount()</span>
 }
 <img width="500" src="~/imgs/breadsugar.jpg" />

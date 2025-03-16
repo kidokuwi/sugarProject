@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using sugarProject.DataModel;
 using ClassicCarsRazor.DataModel;
 using System.Data;
+using System;
 
 namespace sugarProject.Pages
 {
@@ -16,6 +17,7 @@ namespace sugarProject.Pages
 
 		public IActionResult OnPost()
 		{
+			LoginService LS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<LoginService>();
 			DBHelper db = new DBHelper();
 			DataTable userTable;
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE} WHERE eMail = '{login_email}' AND pass = '{login_password}'";
@@ -26,10 +28,14 @@ namespace sugarProject.Pages
 				return RedirectToPage("/Register");
 
 			}
+
+			LS.IncrementloginCount();
 			return RedirectToPage("/index");
+			
 		}
 		public void OnGet()
         {
-        }
+			LoginService LS = ServiceProviderAccessor.ServiceProvider.GetRequiredService<LoginService>();
+		}
     }
 }
