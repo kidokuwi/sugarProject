@@ -1,5 +1,4 @@
-﻿const { error } = require("jquery");
-
+﻿
 function checkEmail() {
     let errorEmail = document.getElementById("reg_errormail");
     const emailElement = document.getElementById("reg_email");
