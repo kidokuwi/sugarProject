@@ -23,7 +23,7 @@ namespace sugarProject.Pages
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE} WHERE eMail = '{login_email}' AND pass = '{login_password}'";
 			userTable = db.RetrieveTable(sqlQuery, "users");
 
-			if (userTable.Rows.Count != 1)
+			if (userTable.Rows.Count < 1)
 			{
 				Response.Cookies.Delete("fName");
 				return RedirectToPage("/Register");

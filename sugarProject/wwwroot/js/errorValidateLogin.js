@@ -1,4 +1,16 @@
 ﻿
+function validateForm(event) {
+    let isPassValid = checkPass();
+    let isEmailValid = checkEmail();
+    if (!isEmailValid || !isPassValid) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
+
+    return isEmailValid && isPassValid;
+}
+
 function checkEmail() {
     let errorEmail = document.getElementById("reg_errormail");
     const emailElement = document.getElementById("reg_email");
@@ -72,6 +84,7 @@ function validateHebrew(str1) {
     return true;
 }
 function validateBadChars(str1) {
+    return true;
     let errorEmail = document.getElementById("reg_errormail");
     let badCh = "!#$%^&*()-<>[]{}?+=~"
     let l = badCh.length;
