@@ -27,9 +27,9 @@
           onreset="resetForm();" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="reg_email">Email</label>
-            <input type="email" asp-for="email" class="form-control"
+            <input type="email" asp-for="@Model.user.eMail" class="form-control"
                    placeholder="abc.efg@gmail.co.il" oninput="checkEmail()"
-                   id="reg_email" maxlength="25" value="@Model.email" required />
+                   id="reg_email" maxlength="25" value="@Model.user.eMail" required />
             <div class="invalid-feedback" id="reg_errormail">
                 Please enter a
                 valid email.
@@ -38,8 +38,8 @@
 
         <div class="form-group">
             <label for="reg_password">Password</label>
-            <input type="text" asp-for="password" class="form-control"
-                   id="reg_password" oninput="checkPass()" maxlength="25" value="@Model.password" required />
+            <input type="text" asp-for="@Model.user.pass" class="form-control"
+                   id="reg_password" oninput="checkPass()" maxlength="25" value="@Model.user.pass" required />
             <div class="invalid-feedback" id="reg_errorpass">
                 Please enter a
                 password.
@@ -48,8 +48,8 @@
 
 		<div class="form-group">
 			<label for="reg_password">First Name</label>
-			<input type="text" asp-for="fName" class="form-control"
-				   id="reg_fName" oninput="checkFName()" maxlength="25" value="@Model.fName" required />
+			<input type="text" asp-for="@Model.user.fName" class="form-control"
+				   id="reg_fName" oninput="checkFName()" maxlength="25" value="@Model.user.fName" required />
 			<div class="invalid-feedback" id="reg_errorfName">
 				Please enter a
 				first name.

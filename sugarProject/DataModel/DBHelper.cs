@@ -42,8 +42,49 @@ namespace ClassicCarsRazor.DataModel
                 .Build();
             conString = configuration.GetConnectionString(Utils.CONFIG_DB_FILE);
         }
+		public User GetUserById(string id) // Changed the parameter type to string to match where it's called
+		{
+			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE} WHERE Id = '{id}'";
+			DataTable userTable = RetrieveTable(sqlQuery, "users");
 
-        public DataTable RetrieveTable(string SQLStr, string table)
+			if (userTable.Rows.Count == 1)
+			{
+				User user = new User();
+				user.Id = Convert.ToInt32(userTable.Rows[0]["Id"]);
+				user.uName = userTable.Rows[0]["uName"].ToString();
+				user.lName = userTable.Rows[0]["lName"].ToString();
+				user.fName = userTable.Rows[0]["fName"].ToString();
+				user.eMail = userTable.Rows[0]["eMail"].ToString();
+				user.gender = userTable.Rows[0]["gender"].ToString();
+				user.yearBorn = Convert.ToInt32(userTable.Rows[0]["yearBorn"]);
+				user.prefix = userTable.Rows[0]["prefix"].ToString();
+				user.phone = userTable.Rows[0]["phone"].ToString();
+
+				// Handle the boolean (bit) fields
+				user.eatsWhiteBread = ConvertBitToBoolean(userTable.Rows[0]["eatsWhiteBread"]);
+				user.eatsSugarRegularly = ConvertBitToBoolean(userTable.Rows[0]["eatsSugarRegularly"]);
+				user.doesSports = ConvertBitToBoolean(userTable.Rows[0]["doesSports"]);
+				user.likesBrownBread = ConvertBitToBoolean(userTable.Rows[0]["likesBrownBread"]);
+
+				user.pass = userTable.Rows[0]["pass"].ToString();
+				return user;
+			}
+			else
+			{
+				return null;
+			}
+		}
+
+		// Helper method to convert a database 'bit' (0 or 1) to a boolean (true or false)
+		private bool ConvertBitToBoolean(object bitValue)
+		{
+			if (bitValue != DBNull.Value)
+			{
+				return Convert.ToInt32(bitValue) == 1;
+			}
+			return false; // Default to false if the value is NULL
+		}
+		public DataTable RetrieveTable(string SQLStr, string table)
         // Gets A table from the data base acording to the SELECT Command in SQLStr;
         // Returns DataTable with the Table.
         {
@@ -218,29 +259,28 @@ namespace ClassicCarsRazor.DataModel
             int numRowsEffected = ExecuteNonQuery(SQL);
             return numRowsEffected;
         }
-        
-        public int Update(User user, string table)
-        {
-            string SQL = $"UPDATE {table} " +
-                $"SET Email ='{user.eMail}', " +
-                $"Password = '{user.pass}', " +
-                $"FirstName = '{user.fName}', " +
-                $"LastName = '{user.lName}', " +
-                $"PrefixID = {user.prefix}, " +
-                $"Phone = '{user.phone}', " +
-                $"Gender = '{user.gender}', " +
-                $"Car1 = '{user.eatsSugarRegularly}', " +
-                $"Car2 = '{user.eatsWhiteBread}', " +
-                $"Car3 = '{user.doesSports}', " +
-                $"YearOfBirth = '{user.yearBorn}', " +
-                //$"Birthday = '{user.Birthday:MM-dd-yyyy HH:mm:ss}' " +
-                $"WHERE UserId = {user.Id} ";
-            // TBD add the other fields !!!
-            int numRowsEffected = ExecuteNonQuery(SQL);
-            return numRowsEffected;
-        }
 
-        public int UpdateAdmin(int userId, bool isAdmin)
+		public int Update(User user, string table)
+		{
+			string SQL = $"UPDATE {table} " +
+						 $"SET eMail ='{user.eMail}', " +
+						 $"pass = '{user.pass}', " +
+						 $"fName = '{user.fName}', " +
+						 $"lName = '{user.lName}', " +
+						 $"prefix = '{user.prefix}', " +
+						 $"phone = '{user.phone}', " +
+						 $"gender = '{user.gender}', " +
+						 $"eatsSugarRegularly = {(user.eatsSugarRegularly ? 1 : 0)}, " +
+						 $"eatsWhiteBread = {(user.eatsWhiteBread ? 1 : 0)}, " +
+						 $"doesSports = {(user.doesSports ? 1 : 0)}, " +
+						 $"yearBorn = '{user.yearBorn}', " +
+						 $"likesBrownBread = {(user.likesBrownBread ? 1 : 0)} " +
+						 $"WHERE Id = {user.Id} ";
+			int numRowsEffected = ExecuteNonQuery(SQL);
+			return numRowsEffected;
+		}
+
+		public int UpdateAdmin(int userId, bool isAdmin)
         {
             string sql = string.Empty;
             int numRowsEffected = 0;
