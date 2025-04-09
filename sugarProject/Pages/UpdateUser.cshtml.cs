@@ -19,6 +19,15 @@ namespace sugarProject.Pages
 		public string? password { get; set; }
 		[BindProperty]
 		public string? fName { get; set; }
+		[BindProperty]
+		public string? gender { get; set; }
+		[BindProperty]
+		public bool eatsWhiteBread { get; set; }
+		[BindProperty]
+		public bool eatsSugarRegularly { get; set; }
+		[BindProperty]
+		public bool doesSports { get; set; }
+
 
 
 		public void OnGet()
@@ -38,6 +47,10 @@ namespace sugarProject.Pages
 			user.eMail = email;
 			user.pass = password;
 			user.fName = fName;
+			user.gender = gender;
+			user.eatsWhiteBread = eatsWhiteBread;
+			user.eatsSugarRegularly = eatsSugarRegularly;
+			user.doesSports = doesSports;
 
 			HttpContext.Session.SetString("fName", fName);
 			Response.Cookies.Append("fName", HttpContext.Session.GetString("fName"));

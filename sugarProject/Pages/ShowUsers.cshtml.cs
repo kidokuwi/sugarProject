@@ -8,7 +8,7 @@ namespace sugarProject.Pages
     public class ShowUsersModel : PageModel
     {
 		public DataTable? DataTableUsers { get; set; }
-        public string[] displayColumns { get; set; } = ["Id", "uName", "fName", "eMail", "yearBorn", "prefix", "phone", "pass"];
+        public string[] displayColumns { get; set; } = ["Id", "uName", "fName", "eMail", "yearBorn", "prefix", "phone", "pass", "gender"];
 		public IActionResult OnGet()
         {
 			DBHelper db = new DBHelper();

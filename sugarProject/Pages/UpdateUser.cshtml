@@ -59,13 +59,13 @@
         <div class="form-group">
             <label for="reg_gender">Gender:</label>
             <br>
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Male" id="reg_gender_male">
+            <input asp-for="gender" type="radio" name="gender" value="Male" id="reg_gender_male" checked>
             <label for="reg_gender_male">Male</label>
 
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Female" id="reg_gender_female">
+            <input asp-for="gender" type="radio" name="gender" value="Female" id="reg_gender_female">
             <label for="reg_gender_female">Female</label>
 
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Other" id="reg_gender_other">
+            <input asp-for="gender" type="radio" name="gender" value="Other" id="reg_gender_other">
             <label for="reg_gender_other">Other</label>
 
             <div class="invalid-feedback d-none" id="reg_errorgender">
@@ -77,9 +77,9 @@
             <label for="reg_health">AM I HEALTHY</label>
             <br />
             <div class="form-check form-check-inline">
-                <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="user.doesSports" id="reg_sport" />
-                <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsWhiteBread" id="reg_whitebread" />
-                <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsSugarRegularly" id="reg_sugar" />
+                <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="@Model.doesSports" id="reg_sport" />
+                <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsWhiteBread" id="reg_whitebread" />
+                <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsSugarRegularly" id="reg_sugar" />
             </div>
 
         </div>
