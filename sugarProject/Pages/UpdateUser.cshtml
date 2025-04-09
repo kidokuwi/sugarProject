@@ -21,7 +21,7 @@
 
     <h3 class="text-center" style="color: #FF7F50; font-weight: bold;">
         User
-        Login
+        UPDATE
     </h3>
     <form name="regform" method="post" onsubmit="return validateForm(event);"
           onreset="resetForm();" class="needs-validation" novalidate>
@@ -56,6 +56,33 @@
             </div>
 		</div>
 
+        <div class="form-group">
+            <label for="reg_gender">Gender:</label>
+            <br>
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Male" id="reg_gender_male">
+            <label for="reg_gender_male">Male</label>
+
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Female" id="reg_gender_female">
+            <label for="reg_gender_female">Female</label>
+
+            <input asp-for="user.gender" type="radio" name="user.gender" value="Other" id="reg_gender_other">
+            <label for="reg_gender_other">Other</label>
+
+            <div class="invalid-feedback d-none" id="reg_errorgender">
+                Please select a gender.
+            </div>
+        </div>
+
+        <div>
+            <label for="reg_health">AM I HEALTHY</label>
+            <br />
+            <div class="form-check form-check-inline">
+                <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="user.doesSports" id="reg_sport" />
+                <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsWhiteBread" id="reg_whitebread" />
+                <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="user.eatsSugarRegularly" id="reg_sugar" />
+            </div>
+
+        </div>
 
         <button type="submit" name="submit" value="login" class="btn btnprimary
 btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">
