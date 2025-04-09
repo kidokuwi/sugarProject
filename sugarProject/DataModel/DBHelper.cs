@@ -42,7 +42,7 @@ namespace ClassicCarsRazor.DataModel
                 .Build();
             conString = configuration.GetConnectionString(Utils.CONFIG_DB_FILE);
         }
-		public User GetUserById(string id) // Changed the parameter type to string to match where it's called
+		public User GetUserById(string id)
 		{
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE} WHERE Id = '{id}'";
 			DataTable userTable = RetrieveTable(sqlQuery, "users");
@@ -60,7 +60,7 @@ namespace ClassicCarsRazor.DataModel
 				user.prefix = userTable.Rows[0]["prefix"].ToString();
 				user.phone = userTable.Rows[0]["phone"].ToString();
 
-				// Handle the boolean (bit) fields
+				
 				user.eatsWhiteBread = ConvertBitToBoolean(userTable.Rows[0]["eatsWhiteBread"]);
 				user.eatsSugarRegularly = ConvertBitToBoolean(userTable.Rows[0]["eatsSugarRegularly"]);
 				user.doesSports = ConvertBitToBoolean(userTable.Rows[0]["doesSports"]);

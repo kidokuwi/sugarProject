@@ -27,21 +27,7 @@ namespace sugarProject.Pages
 			DBHelper db = new DBHelper();
 			DataTable userTable;
 			user = db.GetUserById(HttpContext.Session.GetString("id"));
-			if (HttpContext.Session.GetString("fName") == null)
-			{
-				ViewData["UserName"] = "Guest";
-				Response.Cookies.Delete("fName");
-			}
-			else
-			{
-				ViewData["UserName"] = HttpContext.Session.GetString("fName");
-				id = HttpContext.Session.GetString("id");
-				string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE} WHERE Id = '{id}'";
-				userTable = db.RetrieveTable(sqlQuery, "users");
-				password = userTable.Rows[0]["pass"].ToString();
-				email = userTable.Rows[0]["eMail"].ToString();
-				fName = userTable.Rows[0]["fName"].ToString();
-			}
+		
 
 
 		}
@@ -49,10 +35,13 @@ namespace sugarProject.Pages
 		{
 			DBHelper db = new DBHelper();
 			user = db.GetUserById(HttpContext.Session.GetString("id"));
-			user.eMail = "idoooooooo@gmail.com";
-			user.fName = "IDOOOO";
-			user.pass = "1234Aa123";
-			
+			user.eMail = email;
+			user.pass = password;
+			user.fName = fName;
+
+			HttpContext.Session.SetString("fName", fName);
+			Response.Cookies.Append("fName", HttpContext.Session.GetString("fName"));
+
 			db.Update(user, "users");
 			return RedirectToPage("/index");
 		}
