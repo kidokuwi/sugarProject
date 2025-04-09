@@ -34,6 +34,8 @@ namespace sugarProject.Pages
 			string fName = userTable.Rows[0]["fName"].ToString();
 			HttpContext.Session.SetString("fName", fName);
 			Response.Cookies.Append("fName", HttpContext.Session.GetString("fName"));
+			string id = userTable.Rows[0]["id"].ToString();
+			HttpContext.Session.SetString("id", id);
 			return RedirectToPage("/index");
 			
 		}
@@ -48,7 +50,7 @@ namespace sugarProject.Pages
 			}
 			else
 			{
-				ViewData["UserName"] = HttpContext.Session.GetString("fName");	
+				ViewData["UserName"] = HttpContext.Session.GetString("fName");
 			}
 		}
     }

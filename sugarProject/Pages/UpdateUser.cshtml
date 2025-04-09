@@ -1,21 +1,21 @@
 ﻿@page
-@model sugarProject.Pages.LoginModel
+@model sugarProject.Pages.UpdateUserModel
 @using Microsoft.AspNetCore.Http
 @{
 }
 
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="~/js/errorvalidatelogin.js"></script>
+    <script src="~/js/errorvalidatelogin.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <script>
 
 </script>
 <style>
-	.center {
-		width: 30%;
-	}
+    .center {
+        width: 30%;
+    }
 </style>
 <div>
 
@@ -27,9 +27,9 @@
           onreset="resetForm();" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="reg_email">Email</label>
-            <input type="email" asp-for="login_email" class="form-control"
+            <input type="email" asp-for="email" class="form-control"
                    placeholder="abc.efg@gmail.co.il" oninput="checkEmail()"
-                   id="reg_email" maxlength="25" required />
+                   id="reg_email" maxlength="25" value="@Model.email" required />
             <div class="invalid-feedback" id="reg_errormail">
                 Please enter a
                 valid email.
@@ -38,19 +38,29 @@
 
         <div class="form-group">
             <label for="reg_password">Password</label>
-            <input type="password" asp-for="login_password" class="form-control"
-                   id="reg_password" oninput="checkPass()" maxlength="25" required />
+            <input type="text" asp-for="password" class="form-control"
+                   id="reg_password" oninput="checkPass()" maxlength="25" value="@Model.password" required />
             <div class="invalid-feedback" id="reg_errorpass">
                 Please enter a
                 password.
             </div>
         </div>
 
-		
+		<div class="form-group">
+			<label for="reg_password">First Name</label>
+			<input type="text" asp-for="fName" class="form-control"
+				   id="reg_fName" oninput="checkFName()" maxlength="25" value="@Model.fName" required />
+			<div class="invalid-feedback" id="reg_errorfName">
+				Please enter a
+				first name.
+            </div>
+		</div>
+
+
         <button type="submit" name="submit" value="login" class="btn btnprimary
 btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;">
-            login
+            update
         </button>
-		@Html.AntiForgeryToken()
-    </form>   
+        @Html.AntiForgeryToken()
+    </form>
 </div>

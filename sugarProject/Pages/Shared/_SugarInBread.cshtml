@@ -24,12 +24,13 @@
                 <li><a asp-page="/sugarInBread">Sugar in bread</a></li>
                 <li><a asp-page="/ShowUsers">Show users</a></li>
                 <li><a asp-page="/Register">Register</a></li>
-                <li style="margin-left: 900px; display: inline-flex; align-items: center;">
+                <li style="margin-left: 700px; display: inline-flex; align-items: center;">
                     Welcome @ViewData["UserName"],
                     @{
 						if (ViewData["UserName"] != "Guest")
 						{
 							<a asp-page="/Logout">Logout</a>
+                            <a asp-page="/UpdateUser">Update user</a>
 						}
 						else{
                             <a asp-page="/Login">Login</a>
