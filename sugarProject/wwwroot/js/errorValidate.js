@@ -88,7 +88,7 @@ function validateBadChars(str1) {
 
 
 function checkGender() {
-    const radioButtons = document.getElementsByName('user.gender'); // Make sure this matches the ASP.NET field name
+    const radioButtons = document.getElementsByName('user.gender');
     let errorGender = document.getElementById("reg_errorgender");
     let isSet = false;
 

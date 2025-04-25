@@ -20,9 +20,7 @@ namespace sugarProject.Pages
 		public string[] displayColumns { get; set; } = ["Id", "uName","lName", "fName", "eMail", "yearBorn", "prefix", "phone", "pass"];
 		public IActionResult OnGet()
 		{
-			filterColumn = "";
-			filterValue = "";
-
+		
 			DBHelper db = new DBHelper();
 			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
 			DataTableUsers = db.RetrieveTable(sqlQuery, "users");

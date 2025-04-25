@@ -37,9 +37,7 @@
 
 	<table class="table table-striped table-bordered table-hover table-dark table-responsive">
 		<thead>
-			<tr>
-
-				
+			<tr>	
 				@foreach (string displayColumn in @Model.displayColumns)
 				{
 					<th>@displayColumn</th>
@@ -49,11 +47,8 @@
 		</thead>
 		<tbody>
 			@foreach (DataRow row in @Model.DataTableUsers.Rows)
-			{
-				
+			{			
 				<tr>
-					
-
 					@foreach (string displayColumn in @Model.displayColumns)
 					{
 
