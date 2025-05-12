@@ -1,5 +1,0 @@
-﻿CREATE TABLE [dbo].[AdminTbl]
-(
-	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
-    [eMail] VARCHAR(30) NOT NULL
-)
