@@ -22,6 +22,13 @@
                 <li><a asp-page="/index">Home</a></li>
                 <li><a asp-page="/secondaryPage">Secondary page</a></li>
                 <li><a asp-page="/sugarInBread">Sugar in bread</a></li>
+                @{if ("Admin" == Context.Session.GetString("Role"))
+                {
+                        <li><a asp-page="/ShowUsers">Show users</a></li>
+                        <li><a asp-page="/Admin">Admin Page</a></li>
+
+                }}
+
                 <li><a asp-page="/ShowUsers">Show users</a></li>
                 <li><a asp-page="/Register">Register</a></li>
 				<li><a asp-page="/Gallery">Gallery</a></li>

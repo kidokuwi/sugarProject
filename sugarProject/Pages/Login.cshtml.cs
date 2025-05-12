@@ -36,7 +36,18 @@ namespace sugarProject.Pages
 			Response.Cookies.Append("fName", HttpContext.Session.GetString("fName"));
 			string id = userTable.Rows[0]["id"].ToString();
 			HttpContext.Session.SetString("id", id);
-			return RedirectToPage("/index");
+
+            string sqlAdmin = $"SELECT * FROM AdminTbl WHERE eMail = '{userTable.Rows[0]["eMail"]}'";
+            if (db.Find(sqlAdmin)) // found an Admin
+            {
+                HttpContext.Session.SetString("Role", "Admin");
+            }
+            else
+            {
+                HttpContext.Session.SetString("Role", "Guest");
+            }
+
+            return RedirectToPage("/index");
 			
 		}
 		public void OnGet()
