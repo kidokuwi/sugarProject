@@ -7,7 +7,9 @@ namespace sugarProject.Pages
 {
     public class DeleteUserModel : PageModel
     {
-		public IActionResult OnGet(int Id)
+		public string deleteResultMessage { get; set; }
+
+        public IActionResult OnGet(int Id)
 		{
 			if (Id > 0)
 			{
@@ -16,9 +18,9 @@ namespace sugarProject.Pages
 				int numRowsAffected = dBHelper.ExecuteNonQuery(sqlQuery);
 				if (numRowsAffected != 1)
 				{
-					return RedirectToPage("/Admin");
-				}
-			}
+                    deleteResultMessage = $"Unable to delete record with ID {Id}";
+                }
+            }
 			return RedirectToPage("/Admin");
 		}
 
