@@ -49,7 +49,7 @@
 		<div class="form-group">
 			<label for="reg_password">First Name</label>
 			<input type="text" asp-for="@Model.fName" class="form-control"
-				   id="reg_fName" oninput="checkFName()" maxlength="25" value="@Model.user.fName" required />
+				   id="reg_fName" maxlength="25" value="@Model.user.fName" required />
 			<div class="invalid-feedback" id="reg_errorfName">
 				Please enter a
 				first name.
