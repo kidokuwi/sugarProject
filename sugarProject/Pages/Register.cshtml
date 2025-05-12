@@ -11,25 +11,27 @@
 <script>
 
 
-    function validate(event) {
-		let isPassValid = checkPass();
+        function validate(event) {
+        let isPassValid = checkPass();
         let isEmailValid = checkEmail();
         let isGenderValid = checkGender();
         let isPhoneValid = checkPhone();
         let isYearbornValid = checkYearBorn();
+
         
-        if (!isEmailValid || !isGenderValid || !isPhoneValid || !isPassValid || !isYearbornValid) 
-        {
+        const form = event.target;
+
+        if (!isEmailValid || !isGenderValid || !isPhoneValid || !isPassValid || !isYearbornValid) {
             event.preventDefault();
             event.stopPropagation();
             form.classList.add("was-validated");
-        }
-        else {
+        } else {
             form.classList.add("was-validated");
         }
 
         return isEmailValid && isGenderValid && isPhoneValid && isPassValid && isYearbornValid;
     }
+
 
 
 </script>
