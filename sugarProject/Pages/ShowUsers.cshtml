@@ -23,7 +23,7 @@
 	.center{
 		padding-left:125px;
 		padding-right:125px;
-		width:60%;
+		width:70%;
 	}
 </style>
 <div>
@@ -32,7 +32,7 @@
 		<thead>
 			<tr>
 
-				
+				<th>Delete</th>
 				@foreach (string displayColumn in @Model.displayColumns)
 				{
 					<th>@displayColumn</th>
@@ -41,12 +41,13 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 			@foreach (DataRow row in @Model.DataTableUsers.Rows)
 			{
 				
 				<tr>
-					
 
+					<td><a asp-page="/DeleteUser" asp-route-param="@row["Id"]"> Delete</a></td>
 					@foreach (string displayColumn in @Model.displayColumns)
 					{
 

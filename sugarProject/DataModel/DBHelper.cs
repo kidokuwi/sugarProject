@@ -255,7 +255,7 @@ namespace ClassicCarsRazor.DataModel
             {
                 return -1;
             }
-            string SQL = $"DELETE FROM {table} WHERE ID = {id}";
+            string SQL = $"DELETE FROM {table} WHERE Id = {id}";
             int numRowsEffected = ExecuteNonQuery(SQL);
             return numRowsEffected;
         }
