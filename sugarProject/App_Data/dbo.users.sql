@@ -12,6 +12,7 @@
     [eatsSugarRegularly] BIT          NULL,
     [doesSports]         BIT          NULL,
     [likesBrownBread]    BIT          NULL,
-    [pass]               VARCHAR (10) NOT NULL
+    [pass]               VARCHAR (10) NOT NULL, 
+    CONSTRAINT [PK_users] PRIMARY KEY ([Id])
 );
 
