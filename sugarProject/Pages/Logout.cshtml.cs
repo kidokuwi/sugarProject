@@ -9,7 +9,8 @@ namespace sugarProject.Pages
         {
 			HttpContext.Session.Clear();
 			Response.Cookies.Delete("fName");
-			return RedirectToPage("/Login");
+            HttpContext.Session.SetString("Role", "Guest");
+            return RedirectToPage("/Login");
 		}
 		
 	}

@@ -12,7 +12,11 @@ namespace sugarProject.Pages
 		public IActionResult OnGet()
         {
 			DBHelper db = new DBHelper();
-			string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
+			if (HttpContext.Session.GetString("Role") != "Admin")
+            {
+                return RedirectToPage("/index");
+            }
+            string sqlQuery = $"SELECT * FROM {Utils.DB_USERS_TABLE}";
 			DataTableUsers = db.RetrieveTable(sqlQuery, "users");
 			if (HttpContext.Session.GetString("fName") == null)
 			{

@@ -35,6 +35,7 @@ namespace sugarProject.Pages
 			
 			DBHelper db = new DBHelper();
 			DataTable userTable;
+
 			user = db.GetUserById(HttpContext.Session.GetString("id"));
             if (HttpContext.Session.GetString("fName") == null)
             {

@@ -14,7 +14,11 @@ namespace sugarProject.Pages
 			if (Id > 0)
 			{
 				DBHelper dBHelper = new DBHelper();
-				string sqlQuery = $"DELETE FROM {Utils.DB_USERS_TABLE} WHERE Id = {Id}";
+                if (HttpContext.Session.GetString("Role") != "Admin")
+                {
+                    return RedirectToPage("/index");
+                }
+                string sqlQuery = $"DELETE FROM {Utils.DB_USERS_TABLE} WHERE Id = {Id}";
 				int numRowsAffected = dBHelper.ExecuteNonQuery(sqlQuery);
 				if (numRowsAffected != 1)
 				{
