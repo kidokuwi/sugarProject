@@ -9,14 +9,29 @@
         .backgroundDiv{
             width: 700px;
         }
-
+            
+            #smallImg{
+                text-align: center;
+                width: 150px;
+                height: 100px;
+            }
+            
+            #smallImg:hover{
+                    background: #FF5200;
+                    box-shadow: 0 0 20px #FF5200;
+            }
             
             #mainImg {
                 width: 300px;
                 height: 200px;
                 transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out; 
                 opacity: 1; 
-                transform: scale(1); 
+                transform: scale(1);
+                
+            }
+            #mainImg:hover{
+                    background: #FF5200;
+                    box-shadow: 0 0 50px #FF5200;
             }
 
                 #mainImg.pop-in {
@@ -29,17 +44,17 @@
 }
 
 <div style="display: grid; grid-template-columns: 150px 150px 150px 150px; grid-template-rows: 100px 100px 100px 100px; gap: 10px; height: 400px; max-width: 400px; margin: 0 auto; align-items: center; justify-content: center;">
-    <div style="text-align: center;"><img onmouseover="enlarge(2)" src="/imgs/BreadTypes/b2.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(3)" src="/imgs/BreadTypes/b3.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(4)" src="/imgs/BreadTypes/b4.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(5)" src="/imgs/BreadTypes/b5.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(6)" src="/imgs/BreadTypes/b6.jpg" style="width:150px; height:100px;"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(2)" src="/imgs/BreadTypes/b2.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(3)" src="/imgs/BreadTypes/b3.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(4)" src="/imgs/BreadTypes/b4.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(5)" src="/imgs/BreadTypes/b5.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(6)" src="/imgs/BreadTypes/b6.jpg" id="smallImg"></div>
     <div style="grid-column: 2 / span 2; grid-row: 2 / span 2; text-align: center;"><img id="mainImg" src="/imgs/BreadTypes/b13.jpg" style="width:300px; height:200px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(8)" src="/imgs/BreadTypes/b8.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(9)" src="/imgs/BreadTypes/b9.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(10)" src="/imgs/BreadTypes/b10.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(11)" src="/imgs/BreadTypes/b11.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(12)" src="/imgs/BreadTypes/b12.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(13)" src="/imgs/BreadTypes/b13.jpg" style="width:150px; height:100px;"></div>
-    <div style="text-align: center;"><img onmouseover="enlarge(7)" src="/imgs/BreadTypes/b7.jpg" style="width:150px; height:100px;"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(8)" src="/imgs/BreadTypes/b8.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(9)" src="/imgs/BreadTypes/b9.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(10)" src="/imgs/BreadTypes/b10.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(11)" src="/imgs/BreadTypes/b11.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(12)" src="/imgs/BreadTypes/b12.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(13)" src="/imgs/BreadTypes/b13.jpg" id="smallImg"></div>
+    <div style="text-align: center;"><img onmouseover="enlarge(7)" src="/imgs/BreadTypes/b7.jpg" id="smallImg"></div>
 </div>

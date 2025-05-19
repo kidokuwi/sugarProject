@@ -7,6 +7,15 @@ namespace sugarProject.Pages
     {
         public void OnGet()
         {
+            if (HttpContext.Session.GetString("fName") == null)
+            {
+                ;
+                ViewData["UserName"] = "Guest";
+            }
+            else
+            {
+                ViewData["UserName"] = HttpContext.Session.GetString("fName");
+            }
         }
     }
 }
