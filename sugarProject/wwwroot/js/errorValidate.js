@@ -73,7 +73,7 @@ function validateHebrew(str1) {
 }
 function validateBadChars(str1) {
     let errorEmail = document.getElementById("reg_errormail");
-    let badCh = "!#$%^&*()-<>[]{}?+=~"
+    let badCh = "!#$%^&*()-<>[]{}?+=~'"
     let l = badCh.length;
     for (let i = 0; i < l; i++) {
         for (let j = 0; j < str1.length; j++) {
