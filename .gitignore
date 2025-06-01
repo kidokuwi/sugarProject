@@ -361,3 +361,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /sugarProject/App_Data/usersDB_log.ldf
 /sugarProject/App_Data/usersDB.mdf
+/sugarProject/App_Data/usersDB.mdf
