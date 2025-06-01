@@ -1,6 +1,6 @@
 ﻿
 function validateForm(event) {
-    return true;
+    
     let isPassValid = checkPass();
     let isEmailValid = checkEmail();
     if (!isEmailValid || !isPassValid) {
