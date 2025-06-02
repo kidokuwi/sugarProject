@@ -32,7 +32,6 @@
 		<thead>
 			<tr>
 
-				<th>Delete</th>
 				@foreach (string displayColumn in @Model.displayColumns)
 				{
 					<th>@displayColumn</th>
@@ -47,7 +46,6 @@
 				
 				<tr>
 
-					<td><a asp-page="/DeleteUser" asp-route-param="@row["Id"]"> Delete</a></td>
 					@foreach (string displayColumn in @Model.displayColumns)
 					{
 

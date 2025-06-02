@@ -1,8 +1,6 @@
 ﻿@page
 @model sugarProject.Pages.LogoutModel
 @{
-    // from login (or null if not logging in yet)
     HttpContext.Session.SetString("fName", string.Empty);
-    // from login (or null if not logging in yet)
     HttpContext.Session.SetString("Role", "Guest");
 }
