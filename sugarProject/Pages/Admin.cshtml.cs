@@ -9,7 +9,9 @@ namespace sugarProject.Pages
 {
     public class AdminModel : PageModel
     {
-		public DataTable? DataTableUsers { get; set; }
+        public string fName { get; set; }
+
+        public DataTable? DataTableUsers { get; set; }
 
 		[BindProperty]
 		public string filterColumn { get; set; }
@@ -20,8 +22,18 @@ namespace sugarProject.Pages
 		public string[] displayColumns { get; set; } = ["Id", "uName","lName", "fName", "eMail", "yearBorn", "prefix", "phone", "pass"];
 		public IActionResult OnGet()
 		{
-		
-			DBHelper db = new DBHelper();
+            if (HttpContext.Session.GetString("fName") == null)
+            {
+                fName = "Guest";
+                ViewData["UserName"] = fName;
+                Response.Cookies.Delete("fName");
+            }
+            else
+            {
+                fName = HttpContext.Session.GetString("fName");
+                ViewData["UserName"] = fName;
+            }
+            DBHelper db = new DBHelper();
             if (HttpContext.Session.GetString("Role") != "Admin")
             {
                 return RedirectToPage("/index");
