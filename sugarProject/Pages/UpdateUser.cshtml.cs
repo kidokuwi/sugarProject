@@ -30,10 +30,14 @@ namespace sugarProject.Pages
 
 
 
-		public void OnGet()
+		public IActionResult OnGet()
 		{
-			
-			DBHelper db = new DBHelper();
+            if (HttpContext.Session.GetString("fName") == "Guest")
+            {
+                return RedirectToPage("/index");
+            }
+
+            DBHelper db = new DBHelper();
 			DataTable userTable;
 
 			user = db.GetUserById(HttpContext.Session.GetString("id"));
@@ -46,6 +50,9 @@ namespace sugarProject.Pages
             {
                 ViewData["UserName"] = HttpContext.Session.GetString("fName");
             }
+
+            
+			return Page();
 
 
 

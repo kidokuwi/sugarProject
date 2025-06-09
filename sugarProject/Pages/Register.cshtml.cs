@@ -54,7 +54,7 @@ namespace sugarProject.Pages
                 errorMessage = "This email is already registered";
                 return Page();
             }
-            return RedirectToPage("/index");
+            return RedirectToPage("/Logout");
         }
 
 

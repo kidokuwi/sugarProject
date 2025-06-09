@@ -39,6 +39,7 @@
     <h3 class="text-center" style="color: #FF7F50; font-weight: bold;">
         User
         Registration
+        @Html.Raw(@Model.errorMessage)
     </h3>
     <form name="regform" method="post" onsubmit="return validate(event);"
           onreset="resetForm();" class="needs-validation" novalidate>
@@ -124,13 +125,13 @@
         <div class="form-group">
             <label for="reg_gender">Gender:</label>
             <br>
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Male" id="reg_gender_male">
+                        <input asp-for="user.gender" type="radio" name="user.gender" value="Male" id="reg_gender_male" onchange="checkGender()">
             <label for="reg_gender_male">Male</label>
 
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Female" id="reg_gender_female">
+                        <input asp-for="user.gender" type="radio" name="user.gender" value="Female" id="reg_gender_female" onchange="checkGender()">
             <label for="reg_gender_female">Female</label>
 
-            <input asp-for="user.gender" type="radio" name="user.gender" value="Other" id="reg_gender_other">
+                        <input asp-for="user.gender" type="radio" name="user.gender" value="Other" id="reg_gender_other" onchange="checkGender()">
             <label for="reg_gender_other">Other</label>
 
             <div class="invalid-feedback d-none" id="reg_errorgender">
@@ -175,7 +176,7 @@ btn-block" style="background-color: #FF7F50; border-color:#FF7F50; opacity: 0.8;
         </button>
     </form>
     <div class="table table-striped table-bordered table-hover table-dark table-responsive">
-        @Html.Raw(@Model.st)
+        
 
     </div>
 </div>

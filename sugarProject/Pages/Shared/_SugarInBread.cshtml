@@ -12,6 +12,20 @@
 		setInterval(displayTime, 1000);
     }
 </script>
+@{
+
+    if (Context.Session.GetString("fName") == null)
+    {
+        Context.Session.SetString("fName", "Guest");
+
+    }
+    else
+    {
+        ViewData["UserName"] = Context.Session.GetString("fName"); 
+        Context.Session.SetString("UserName", Context.Session.GetString("fName"));
+
+    }
+}
 <body style="background-color:burlywood; margin: 0px;">
 
     <div class="PageLayout">
@@ -23,7 +37,8 @@
                 <li><a asp-page="/secondaryPage">Secondary page</a></li>
                 <li><a asp-page="/sugarInBread">Sugar in bread</a></li>
                 @{
-                    if (ViewData["UserName"] == "Guest"){
+                    if (ViewData["UserName"].ToString() == "Guest")
+                    {
                         <li><a asp-page="/Register">Register</a></li>
                     }
 
@@ -41,7 +56,7 @@
                 <li style="margin-left: 400px; display: inline-flex; align-items: center;">
                     Welcome @ViewData["UserName"],
                     @{
-						if (ViewData["UserName"] != "Guest")
+                        if (ViewData["UserName"].ToString() != "Guest")
 						{
 							<a asp-page="/Logout">Logout</a>
                             <a asp-page="/UpdateUser">Update user</a>

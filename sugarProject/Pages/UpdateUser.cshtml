@@ -77,9 +77,41 @@
             <label for="reg_health">AM I HEALTHY</label>
             <br />
             <div class="form-check form-check-inline">
-                <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="@Model.doesSports" id="reg_sport" />
-                <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsWhiteBread" id="reg_whitebread" />
-                <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsSugarRegularly" id="reg_sugar" />
+                @{
+                    if (Model.user.eatsSugarRegularly)
+                    {
+                        <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsSugarRegularly" id="reg_sugar" checked />
+
+
+                    }
+                    else
+                    {
+                        <div style="padding-right: 5px;">I eat sugar regularly</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsSugarRegularly" id="reg_sugar" />
+
+                    }
+                    if (Model.user.doesSports)
+                    {
+                        <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="@Model.doesSports" id="reg_sport" checked />
+
+
+                    }
+                    else
+                    {
+                        <div style="padding-right: 5px;">I do sports</div>  <input type="checkbox" class="form-check-input" asp-for="@Model.doesSports" id="reg_sport" />
+
+                    }
+                    if (Model.user.eatsWhiteBread)
+                    {
+                        <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsWhiteBread" id="reg_whitebread" checked />
+
+
+                    }
+                    else
+                    {
+                        <div style="padding-right: 5px;">I eat White Bread</div> <input type="checkbox" class="form-check-input" asp-for="@Model.eatsWhiteBread" id="reg_whitebread" />
+
+                    }
+                }
             </div>
 
         </div>
